@@ -19,7 +19,7 @@ function App() {
 
  const handleChange = () => {
   if(inp === "") {
-    alert("please Enter Todo")
+    alert("😡😡 Please Enter Todo")
   }else{
     const newarr = {
       task:inp,
