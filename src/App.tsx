@@ -9,14 +9,19 @@ function App() {
  const [todos,setTodos] = useState<string[]>([])
 
  const handleChange = () => {
-  setTodos([...todos,inp]);
-  setInp("")
+  if(inp === "") {
+    alert("please Enter Todo")
+  }else{
+    setTodos([...todos,inp]);
+    setInp("")
+  }
+
  }
 
   return (
     <div className="App"> 
-      <Inputfield inp={inp} setInp={setInp} />
-      <Todos  inp={inp} setInp={setInp} todos={todos} setTodos={setTodos} handleChange={handleChange}/>
+      <Inputfield inp={inp} setInp={setInp} handleChange={handleChange}/>
+      <Todos  inp={inp} setInp={setInp} todos={todos} setTodos={setTodos} />
       
     </div>
   );

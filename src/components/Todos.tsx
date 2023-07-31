@@ -1,31 +1,37 @@
 import React from 'react'
+import "../App.css"
 
 interface Props {
     inp :string;
     setInp:React.Dispatch<React.SetStateAction<string>>
     todos:any[];
     setTodos:React.Dispatch<React.SetStateAction<string[]>>
-    handleChange:any
   }
   
+const Todos:React.FC<Props> = ({inp,setInp,todos,setTodos}) => {
+  const deletetodo = (idx:number) => {
+          setTodos(todos.filter((todo:any,index:number) => index!== idx))
+  }
 
-const Todos:React.FC<Props> = ({inp,setInp,todos,setTodos,handleChange}) => {
+
+
   return (
-    <div>    
-           <button onClick={handleChange}>Add Todo</button>
-
-      {todos.map((x) => {
+    <div className='todos'>    
+      {todos.map((x,index) => {
+       
             return (
-                <div style={{display:"flex",alignItems:"center",width:"100px",justifyContent:"space-between"}}>
-                         <li>{x}</li>
-                         <p>X</p>
-                </div>
-                 
-                
+                <div className='listDiv' style={{display:"flex",alignItems:"center",width:"200px",justifyContent:"space-between"}}>
+                         <li className='listItem'>{x}</li>
+                         <div className="iconsrow">
+                         <p className='del' onClick={() => deletetodo(index) } >❌</p>
+                         <p className='update'>✒️</p>
+                         </div>
+                       
+                </div> 
             )
       })}
         </div>
   )
 }
 
-export default Todos
+export default Todos 
