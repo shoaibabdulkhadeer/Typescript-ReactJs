@@ -5,14 +5,29 @@ import Todos from './components/Todos';
 
 function App() {
 
+  interface Itodo{
+    task:string;
+    id:number;
+    isEdit:boolean;
+    done:boolean;
+  }
+
  const [inp,setInp] = useState<string>("")
- const [todos,setTodos] = useState<string[]>([])
+ const [todos,setTodos] = useState<Itodo[]>([])
+
+ 
 
  const handleChange = () => {
   if(inp === "") {
     alert("please Enter Todo")
   }else{
-    setTodos([...todos,inp]);
+    const newarr = {
+      task:inp,
+      id:Date.now(),
+      isEdit:false,
+      done:false
+     }
+    setTodos([...todos,newarr]);
     setInp("")
   }
 
