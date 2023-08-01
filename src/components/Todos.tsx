@@ -8,7 +8,6 @@ interface Itodo{
   done:boolean;
 }
 
-
 interface Props {
     inp :string;
     setInp:React.Dispatch<React.SetStateAction<string>>

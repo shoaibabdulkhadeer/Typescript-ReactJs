@@ -16,9 +16,8 @@ function App() {
  const [todos,setTodos] = useState<Itodo[]>([])
 
  
-
  const handleChange = () => {
-  if(inp === "") {
+  if(inp.trim() === "") {
     alert("😡😡 Please Enter Todo")
   }else{
     const newarr = {
@@ -30,13 +29,15 @@ function App() {
     setTodos([...todos,newarr]);
     setInp("")
   }
-
  }
 
+ const time = (new Date().toLocaleTimeString());
   return (
+    
     <div className="App"> 
-      <Inputfield inp={inp} setInp={setInp} handleChange={handleChange}/>
-      <Todos  inp={inp} setInp={setInp} todos={todos} setTodos={setTodos} />
+     <p className='time'>{time}</p>
+      <Inputfield inp={inp} setInp={setInp} handleChange={handleChange} setTodos={setTodos}/>
+      <Todos inp={inp} setInp={setInp} todos={todos} setTodos={setTodos} />
       
     </div>
   );
